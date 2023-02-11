@@ -32,7 +32,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts(
             // Filtering
             @RequestParam(required = false) ProductCategory category,
-            @RequestParam(required = false) String search
+            @RequestParam(required = false) String search,
+            // Sorting
+            @RequestParam(defaultValue = "created_date") String orderBy,
+            @RequestParam(defaultValue = "desc") String sort
 
     ){
 
@@ -40,6 +43,8 @@ public class ProductController {
         ProductQueryParams productQueryParams =new ProductQueryParams();
         productQueryParams.setCategory(category);
         productQueryParams.setSearch(search);
+        productQueryParams.setOrderBy(orderBy);
+        productQueryParams.setSort(sort);
 
         //get product list
         List<Product> productList = productService.getProducts(productQueryParams);
