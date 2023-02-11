@@ -1,5 +1,6 @@
 package com.percyku.springbootmallprarice.service.imp;
 
+import com.percyku.springbootmallprarice.constant.ProductCategory;
 import com.percyku.springbootmallprarice.dao.ProductDao;
 import com.percyku.springbootmallprarice.dto.ProductRequest;
 import com.percyku.springbootmallprarice.model.Product;
@@ -15,8 +16,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts( ) {
-        return productDao.getProducts();
+    public List<Product> getProducts(ProductCategory category,String search) {
+        return productDao.getProducts(category,search);
     }
 
     @Override
