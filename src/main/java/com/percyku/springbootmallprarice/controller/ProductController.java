@@ -2,6 +2,7 @@ package com.percyku.springbootmallprarice.controller;
 
 
 import com.percyku.springbootmallprarice.constant.ProductCategory;
+import com.percyku.springbootmallprarice.dto.ProductQueryParams;
 import com.percyku.springbootmallprarice.dto.ProductRequest;
 import com.percyku.springbootmallprarice.model.Product;
 import com.percyku.springbootmallprarice.service.ProductService;
@@ -35,8 +36,13 @@ public class ProductController {
 
     ){
 
+
+        ProductQueryParams productQueryParams =new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
         //get product list
-        List<Product> productList = productService.getProducts(category,search);
+        List<Product> productList = productService.getProducts(productQueryParams);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
