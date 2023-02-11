@@ -2,6 +2,7 @@ package com.percyku.springbootmallprarice.service.imp;
 
 
 import com.percyku.springbootmallprarice.dao.UserDao;
+import com.percyku.springbootmallprarice.dto.UserLoginRequest;
 import com.percyku.springbootmallprarice.dto.UserRegisterRequest;
 import com.percyku.springbootmallprarice.model.User;
 import com.percyku.springbootmallprarice.service.UserService;
@@ -36,6 +37,28 @@ public class UserServiceImpl implements UserService {
 
         //create user account
         return userDao.createUser(userRegisterRequest);
+    }
+
+
+    @Override
+    public User login(UserLoginRequest userLoginRequest) {
+        User user =userDao.getUserByEmail(userLoginRequest.getEmail());
+        //check user is existing or not
+        if(user == null){
+            log.warn("This email {} is not registered.{}",userLoginRequest.getEmail(),"USER");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        //check password is correct or not
+        if(user.getPassword().equals(userLoginRequest.getPassword())){
+            return user;
+        }
+        else{
+            log.warn("This email's password {} is not correct.{}",userLoginRequest.getEmail(),"USER");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+
     }
 
 }
