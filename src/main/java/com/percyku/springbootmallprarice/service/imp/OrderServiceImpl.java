@@ -5,6 +5,7 @@ import com.percyku.springbootmallprarice.dao.OrderDao;
 import com.percyku.springbootmallprarice.dao.ProductDao;
 import com.percyku.springbootmallprarice.dto.BuyItem;
 import com.percyku.springbootmallprarice.dto.CreateOrderRequest;
+import com.percyku.springbootmallprarice.model.Order;
 import com.percyku.springbootmallprarice.model.OrderItem;
 import com.percyku.springbootmallprarice.model.Product;
 import com.percyku.springbootmallprarice.model.User;
@@ -31,6 +32,15 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductDao productDao;
 
+    @Override
+    public Order getOrderById(Integer orderId) {
+        Order order =orderDao.getOrderById(orderId);
+        List<OrderItem> orderItemList =orderDao.getOrderItemByOrderId(orderId);
+
+        order.setOrderItemList(orderItemList);
+
+        return order;
+    }
     @Transactional
     @Override
     public Integer createOrder(Integer userId, CreateOrderRequest createOrderRequest) {
