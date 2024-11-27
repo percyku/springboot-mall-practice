@@ -11,7 +11,7 @@ This program is for RESTful API practice
 - Spring boot background (3.0.2)
 - JUnit5
 - H2 Database
-- MySQL(8.0.22) -> Using [create-schema.sql](https://github.com/percyku/springboot-mall-practice/create-schema.sql) /  [create-tables.sql](https://github.com/percyku/springboot-mall-practice/create-schema.sql) /[create-data.sql](https://github.com/percyku/springboot-mall-practice/create-data.sql) to create schema / tables / users data
+- MySQL(8.0.22) -> Using [create-schema.sql](https://github.com/percyku/springboot-mall-practice/blob/master/create-schema.sql) /  [create-tables.sql](https://github.com/percyku/springboot-mall-practice/blob/master/create-tables.sql) /[create-data.sql](https://github.com/percyku/springboot-mall-practice/blob/master/create-data.sql) to create schema / tables /  data
 
 
 # Function
@@ -26,16 +26,17 @@ This program is for RESTful API practice
 
 
 # Unit Test
-Using H2 Database with JUnit5
-
- - UserControllerTest
- - ProductControllerTest
- - OrderControllerTest
+Using H2 Database and JUnit5
+- Controller
+  - UserControllerTest
+  - ProductControllerTest
+  - OrderControllerTest
 
 # RESTful API
 
-You can use talend api tester(chrome Extended functions)  to test those APIs.
-(notes: import this file to talend api tester [restful-api-file](https://github.com/percyku/springboot-mall-practice/springboot-mall-restful-test.json))
+You can use talend api tester(Chrome Extended functions)  to test those APIs.
+
+(note: import this file to talend api tester [restful-api-file](https://github.com/percyku/springboot-mall-practice/blob/master/springboot-mall-restful-test.json))
 
 
 # Ref
