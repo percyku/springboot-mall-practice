@@ -10,3 +10,33 @@ CREATE TABLE product
     created_date       TIMESTAMP    NOT NULL,
     last_modified_date TIMESTAMP    NOT NULL
 );
+
+CREATE TABLE user
+(
+    user_id            INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    email              VARCHAR(256) NOT NULL UNIQUE KEY,
+    password           VARCHAR(256) NOT NULL,
+    created_date       TIMESTAMP    NOT NULL,
+    last_modified_date TIMESTAMP    NOT NULL
+);
+
+
+
+CREATE TABLE `order`
+(
+    order_id           INT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id            INT       NOT NULL,
+    total_amount       INT       NOT NULL, -- 訂單總花費
+    created_date       TIMESTAMP NOT NULL,
+    last_modified_date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE order_item
+(
+    order_item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_id      INT NOT NULL,
+    product_id    INT NOT NULL,
+    quantity      INT NOT NULL, -- 商品數量
+    amount        INT NOT NULL  -- 商品花費
+);
+
